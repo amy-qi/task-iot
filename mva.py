@@ -13,17 +13,24 @@ def moving_average(data, window_size):
     return data.rolling(window=window_size, min_periods=1).mean()
 
 # set ukuran window untuk mva filter
-window_size = 5  
+window_sizes = [5, 10, 15]
 
 # Apply the moving average filter
 mva_filtered_data = moving_average(raw_data, window_size)
 
+#buat subplot untuk pembanding
+plt.figure(figsize=(15, 6))
+for i, window_size in enumerate(window_sizes):
+    mva_filtered_data = moving_average(raw_data, window_size)
+
 # visualisasikan hasil dalam grafik
-plt.figure(figsize=(10, 6))
-plt.plot(raw_data, label='Raw Data')
-plt.plot(mva_filtered_data, label='MVA Data')
-plt.legend()
-plt.title('Raw Data vs. MVA Data (X-axis)')
-plt.xlabel('Sample Index')
-plt.ylabel('Acceleration')
+  plt.subplot(1, len(window_sizes), i+1)
+    plt.plot(raw_data, label='Raw Data')
+    plt.plot(mva_filtered_data, label=f'MVA Data (window={window_size})')
+    plt.legend()
+    plt.title(f'Raw Data vs. MVA Data (Window={window_size})')
+    plt.xlabel('Sample Index')
+    plt.ylabel('Acceleration')
+
 plt.show()
+
