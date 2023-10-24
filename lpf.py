@@ -22,7 +22,7 @@ def butter_lowpass_filter(data, cutoff, fs, order=5):
     return y
 
 # Set the frekuensi filter cutoff and sample rate
-cutoff_frequency = 10.0  
+cutoff_frequency = 14.0  
 sample_rate = 100.0  
 
 # jalankan low-pass filter
