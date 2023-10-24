@@ -33,4 +33,3 @@ for i, window_size in enumerate(window_sizes):
     plt.ylabel('Acceleration')
 
 plt.show()
-
